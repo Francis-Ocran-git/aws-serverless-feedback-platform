@@ -8,6 +8,8 @@ This project demonstrates the design and implementation of a modern serverless a
 
 ## Architecture
 
+![Architechture](architecture/architecture.png)
+
 ```
                         Customer
                             │
@@ -205,25 +207,25 @@ The analytics dashboard provides:
 
 ## Analytics Dashboard
 
-*(Insert screenshot here)*
+![dashboard](screenshots/dashboard-page-screenshot.png)
 
 ---
 
 ## DynamoDB Table
 
-*(Insert screenshot here)*
+![DynamoDB Table](screenshots/dynamodb-items-screenshot.png)
 
 ---
 
 ## CloudWatch Logs
 
-*(Insert screenshot here)*
+![Cloudwatch logs](screenshots/cloudwatch-logs-screenshot.png)
 
 ---
 
 ## SNS Email Notification
 
-*(Insert screenshot here)*
+![SNS email](screenshots/SNS-email-screenshot.png)
 
 ---
 
