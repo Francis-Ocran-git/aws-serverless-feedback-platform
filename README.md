@@ -402,7 +402,7 @@
 
 # 
 
-# !\[Feedback Form](screenshots/feedback-page-screenshot.png)
+# !\[Feedback Form](https://raw.githubusercontent.com/Francis-Ocran-git/aws-serverless-feedback-platform/main/screenshots/feedback-page-screenshot.png)
 
 # 
 
