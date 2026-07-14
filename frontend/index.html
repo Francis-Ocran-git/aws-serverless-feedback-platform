@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AWS Customer Feedback Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+radial-gradient(circle at top left,#173B33 0%,transparent 35%),
+radial-gradient(circle at bottom right,#3A2E1A 0%,transparent 35%),
+linear-gradient(135deg,#0B0F14,#141A23,#1A202C);
+
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px;
+color:#F8FAFC;
+
+}
+
+.container{
+
+display:flex;
+max-width:1100px;
+width:100%;
+
+background:#111827;
+
+border-radius:24px;
+
+overflow:hidden;
+
+border:1px solid rgba(255,255,255,.06);
+
+box-shadow:0 35px 80px rgba(0,0,0,.55);
+
+}
+
+/* LEFT PANEL */
+
+.left{
+
+flex:1;
+
+padding:65px;
+
+background:
+linear-gradient(160deg,#0F766E,#065F46);
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+position:relative;
+
+}
+
+.left::after{
+
+content:"";
+
+position:absolute;
+
+width:300px;
+height:300px;
+
+background:rgba(255,255,255,.06);
+
+border-radius:50%;
+
+top:-100px;
+right:-100px;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:10px 18px;
+
+background:rgba(255,255,255,.15);
+
+border:1px solid rgba(255,255,255,.2);
+
+border-radius:40px;
+
+font-size:14px;
+
+margin-bottom:28px;
+
+backdrop-filter:blur(10px);
+
+}
+
+.left h1{
+
+font-size:44px;
+line-height:1.2;
+margin-bottom:22px;
+font-weight:700;
+
+}
+
+.left p{
+
+font-size:17px;
+line-height:1.9;
+opacity:.92;
+margin-bottom:38px;
+
+}
+
+.features{
+
+list-style:none;
+
+}
+
+.features li{
+
+margin-bottom:18px;
+
+font-size:16px;
+
+}
+
+/* RIGHT PANEL */
+
+.right{
+
+flex:1;
+
+padding:55px;
+
+background:#111827;
+
+}
+
+.right h2{
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+color:#9CA3AF;
+
+margin-bottom:30px;
+
+line-height:1.7;
+
+}
+
+label{
+
+display:block;
+
+margin-top:20px;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+color:#E5E7EB;
+
+}
+
+input,
+textarea{
+
+width:100%;
+
+padding:15px;
+
+border-radius:12px;
+
+border:1px solid #374151;
+
+background:#1F2937;
+
+color:white;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+input::placeholder,
+textarea::placeholder{
+
+color:#9CA3AF;
+
+}
+
+input:focus,
+textarea:focus{
+
+border-color:#10B981;
+
+box-shadow:0 0 0 4px rgba(16,185,129,.15);
+
+outline:none;
+
+}
+
+textarea{
+
+height:150px;
+
+resize:none;
+
+}
+
+button{
+
+width:100%;
+
+margin-top:30px;
+
+padding:16px;
+
+font-size:16px;
+
+font-weight:600;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+background:
+linear-gradient(90deg,#10B981,#34D399);
+
+color:white;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 15px 35px rgba(16,185,129,.35);
+
+}
+
+button:active{
+
+transform:translateY(0);
+
+}
+
+#status{
+
+margin-top:18px;
+
+font-weight:600;
+
+text-align:center;
+
+}
+
+.footer{
+
+margin-top:35px;
+
+font-size:13px;
+
+text-align:center;
+
+color:#6B7280;
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+flex-direction:column;
+
+}
+
+.left{
+
+padding:45px;
+
+}
+
+.right{
+
+padding:35px;
+
+}
+
+.left h1{
+
+font-size:34px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+
+<div class="badge">
+☁ AWS Powered Feedback Platform
+</div>
+
+<h1>Every Voice Shapes Better Experiences.</h1>
+
+<p>
+Your feedback helps us improve the quality of our digital services.
+Every submission is securely processed through a scalable AWS cloud
+architecture designed for reliability, performance, and security.
+</p>
+
+<ul class="features">
+
+<li>✔ Secure Cloud Processing</li>
+
+<li>✔ Serverless AWS Architecture</li>
+
+<li>✔ Real-Time Data Collection</li>
+
+<li>✔ Reliable & Scalable Infrastructure</li>
+
+</ul>
+
+</div>
+
+<div class="right">
+
+<h2>Share Your Experience</h2>
+
+<p class="subtitle">
+We appreciate your time. Tell us what worked well, what could be improved,
+or how we can better serve you.
+</p>
+
+<form id="feedback-form">
+
+<label>Full Name</label>
+
+<input
+type="text"
+id="name"
+placeholder="John Doe"
+required>
+
+<label>Email Address</label>
+
+<input
+type="email"
+id="email"
+placeholder="john@example.com"
+required>
+
+<label>Your Feedback</label>
+
+<textarea
+id="message"
+placeholder="Tell us about your experience..."
+required></textarea>
+
+<button type="submit">
+
+Submit Feedback
+
+</button>
+
+<div id="status"></div>
+
+</form>
+
+<div class="footer">
+
+Designed & Built with HTML • CSS • JavaScript • AWS Cloud Services
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+document
+.getElementById("feedback-form")
+.addEventListener("submit",async(e)=>{
+
+e.preventDefault();
+
+const data={
+
+name:name.value,
+
+email:email.value,
+
+message:message.value
+
+};
+
+const API_URL="https://n7oxpbxme0.execute-api.us-east-1.amazonaws.com/feedback";
+
+try{
+
+const res=await fetch(API_URL,{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify(data)
+
+});
+
+status.innerHTML=res.ok
+?"✅ Thank you! Your feedback has been submitted successfully."
+:"❌ Unable to submit your feedback.";
+
+if(res.ok){
+
+e.target.reset();
+
+}
+
+}catch{
+
+status.innerHTML="⚠ Unable to connect to the server.";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
