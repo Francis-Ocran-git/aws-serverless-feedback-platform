@@ -174,15 +174,13 @@
 
 # ├── dashboard/
 
-# │   └── dashboard.html
+# │   └── index.html
 
 # │
 
 # ├── lambda/
 
 # │   ├── process-feedback.py
-
-# │   ├── get-feedback.py
 
 # │   └── get-stats.py
 
@@ -196,15 +194,15 @@
 
 # ├── screenshots/
 
-# │   ├── feedback-form.png
+# │   ├── feedback-page-screenshot.png
 
-# │   ├── dashboard.png
+# │   ├── dashboard-page-screenshot.png
 
-# │   ├── dynamodb.png
+# │   ├── dynamodb-items-screenshot.png
 
-# │   ├── cloudwatch.png
+# │   ├── cloudwatch-logs-screenshot.png
 
-# │   └── sns-email.png
+# │   └── SNS-email-screenshot.png
 
 # │
 
@@ -402,7 +400,7 @@
 
 # 
 
-# !\[Feedback Form](https://raw.githubusercontent.com/Francis-Ocran-git/aws-serverless-feedback-platform/main/screenshots/feedback-page-screenshot.png)
+# !\[Feedback Form](screenshots/feedback-page-screenshot.png)
 
 # 
 
