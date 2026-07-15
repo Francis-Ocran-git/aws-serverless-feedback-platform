@@ -414,56 +414,76 @@ Designed & Built with HTML • CSS • JavaScript • AWS Cloud Services
 </div>
 
 <script>
-
 document
 .getElementById("feedback-form")
-.addEventListener("submit",async(e)=>{
+.addEventListener("submit", async (e) => {
 
-e.preventDefault();
+    e.preventDefault();
 
-const data={
+    // Get form values explicitly
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
 
-name:name.value,
 
-email:email.value,
+    // Create JSON payload for Lambda
+    const data = {
+        name: name,
+        email: email,
+        message: message
+    };
 
-message:message.value
 
-};
+    const API_URL = "https://n7oxpbxme0.execute-api.us-east-1.amazonaws.com/feedback";
 
-const API_URL="https://n7oxpbxme0.execute-api.us-east-1.amazonaws.com/feedback";
 
-try{
+    try {
 
-const res=await fetch(API_URL,{
+        const res = await fetch(API_URL, {
 
-method:"POST",
+            method: "POST",
 
-headers:{
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-"Content-Type":"application/json"
+            body: JSON.stringify(data)
 
-},
+        });
 
-body:JSON.stringify(data)
 
-});
+        const result = await res.json();
 
-status.innerHTML=res.ok
-?"✅ Thank you! Your feedback has been submitted successfully."
-:"❌ Unable to submit your feedback.";
+        console.log("API Response:", result);
 
-if(res.ok){
 
-e.target.reset();
+        if (res.ok) {
 
-}
+            document.getElementById("status").innerHTML =
+            "✅ Thank you! Your feedback has been submitted successfully.";
 
-}catch{
+            e.target.reset();
 
-status.innerHTML="⚠ Unable to connect to the server.";
+        } 
+        
+        else {
 
-}
+            document.getElementById("status").innerHTML =
+            "❌ Error: " + result.error;
+
+        }
+
+
+    } 
+    
+    catch (error) {
+
+        console.error("Connection error:", error);
+
+        document.getElementById("status").innerHTML =
+        "⚠ Unable to connect to the server.";
+
+    }
 
 });
 
