@@ -375,6 +375,7 @@ or how we can better serve you.
 <input
 type="text"
 id="name"
+name="name"
 placeholder="John Doe"
 required>
 
@@ -383,6 +384,7 @@ required>
 <input
 type="email"
 id="email"
+name="email"
 placeholder="john@example.com"
 required>
 
@@ -390,6 +392,7 @@ required>
 
 <textarea
 id="message"
+name="message"
 placeholder="Tell us about your experience..."
 required></textarea>
 
@@ -414,59 +417,51 @@ Designed & Built with HTML • CSS • JavaScript • AWS Cloud Services
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("feedback-form");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const messageInput = document.getElementById("message");
+    const status = document.getElementById("status");
 
-document
-.getElementById("feedback-form")
-.addEventListener("submit",async(e)=>{
+    const API_URL = "https://n7oxpbxme0.execute-api.us-east-1.amazonaws.com/feedback";
 
-e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-const data={
+        status.textContent = "Submitting...";
+        status.style.color = "#FBBF24";
 
-name:name.value,
+        const data = {
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            message: messageInput.value.trim()
+        };
 
-email:email.value,
+        try {
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
 
-message:message.value
+            const result = await response.json();
 
-};
-
-const API_URL="https://n7oxpbxme0.execute-api.us-east-1.amazonaws.com/feedback";
-
-try{
-
-const res=await fetch(API_URL,{
-
-method:"POST",
-
-headers:{
-
-"Content-Type":"application/json"
-
-},
-
-body:JSON.stringify(data)
-
+            if (response.ok) {
+                status.textContent = "✅ Thank you! Your feedback has been submitted successfully.";
+                status.style.color = "#10B981";
+                form.reset();
+            } else {
+                status.textContent = "❌ " + (result.error || "Unable to submit feedback.");
+                status.style.color = "#EF4444";
+            }
+        } catch (err) {
+            console.error(err);
+            status.textContent = "⚠ Unable to connect to the server.";
+            status.style.color = "#F59E0B";
+        }
+    });
 });
-
-status.innerHTML=res.ok
-?"✅ Thank you! Your feedback has been submitted successfully."
-:"❌ Unable to submit your feedback.";
-
-if(res.ok){
-
-e.target.reset();
-
-}
-
-}catch{
-
-status.innerHTML="⚠ Unable to connect to the server.";
-
-}
-
-});
-
 </script>
 
 </body>
